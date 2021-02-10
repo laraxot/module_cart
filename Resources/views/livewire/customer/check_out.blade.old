@@ -1,0 +1,217 @@
+<div class="row">
+
+
+
+        @foreach($steps as $key => $value)
+            @if($key == $actualStep)
+                {{-- 
+                    <div>
+                        step{{ $key }}
+                    </div>
+                --}}
+
+
+
+                    @php
+                        //dddx($items);
+                    @endphp
+                    <div class="col-lg-7">
+                        <h1 class="h2 mb-5">Il tuo Carrello</h1>
+                        @foreach($items as $k => $item)
+                            @php
+                                //dddx([$k,$item]);
+                            @endphp
+                            <div class="text-block pt-0 pb-0">
+                                <table class="w-100">
+                                    <tbody>
+                                        <tr>
+                                            <th class="font-weight-normal py-2" width="60%">
+                                                <h5 class="mt-2">{{ $item['title'] }}</h5>
+                                            </th>
+                                            <th class="font-weight-normal py-2" width="20%">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="btn btn-items btn-items-decrease" wire:click="decrement('items['{{ $k }}']['qty']')">-</div>
+                                                    <input type="integer" value="{{ $item['qty'] }}" class="form-control input-items text-center border-0 border-md input-items">
+                                                    <div class="btn btn-items btn-items-increase" wire:click="increment('items['{{ $k }}']['qty']')">+</div>
+                                                </div>
+                                            </th>
+                                            <td class="text-right py-2 sub_total">
+                                                {{ $item['tot_price'] }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row mb-3">
+                                    {{-- 
+                                    --}}
+                                    @foreach ($item['changes'] as $k1=>$change)
+                                        @php
+                                            //dddx([$k,$change]);
+                                        @endphp
+                                        @if (array_key_exists('subs', $change))
+                                            @foreach ($change['subs'] as $k2=>$var)
+                                                @php
+                                                    //dddx([$key,$var]);
+                                                @endphp
+                                                <dt class="col-sm-6 p-0">
+                                                    <small>
+                                                        @if ($var['qty'] == 1)
+                                                            <i class="fas fa-plus" style="color:dodgerblue;"></i>
+                                                        @else
+                                                            <i class="fas fa-times" style="color:tomato;"></i>
+                                                        @endif
+                                                        {{ $var['name'] }}
+                                                    </small>
+                                                </dt>
+                                               {{-- dddx([
+                                                   $items,
+                                                   $items[$k],
+                                                   $items[$k]['changes'],
+                                                   $items[$k]['changes'][$k1],
+                                                   $items[$k]['changes'][$k1]['subs'],
+                                                   $items[$k]['changes'][$k1]['subs'][$k2],
+                                                   $items[$k]['changes'][$k1]['subs'][$k2]['qty'],
+                                                   ]) --}}
+
+                                                <div class="btn-group btn-group-toggle">
+                                                    <label class="btn btn-danger">
+                                                        <input type="radio" wire:model="items.{{ $k }}.changes.{{ $k1 }}.subs.{{ $k2 }}.qty"
+                                                            name="items.{{ $k }}.changes.{{ $k1 }}.subs.{{ $k2 }}.qty" autocomplete="off" value="-1">
+                                                        @if (isset($items[$k]['changes'][$k1]['subs'][$k2]['qty']) && $items[$k]['changes'][$k1]['subs'][$k2]['qty'] == -1)
+                                                            [-]
+                                                        @else
+                                                            -
+                                                        @endif
+                                                    </label>
+                                                    
+                                                    
+                                                    <label class="btn btn-default">
+                                                        <input type="radio" wire:model="items.{{ $k }}.changes.{{ $k1 }}.subs.{{ $k2 }}.qty"
+                                                            name="items.{{ $k }}.changes.{{ $k1 }}.subs.{{ $k2 }}.qty" autocomplete="off" checked value="0">
+                                                        @if (isset($items[$k]['changes'][$k1]['subs'][$k2]['qty']) && $items[$k]['changes'][$k1]['subs'][$k2]['qty'] == 0)
+                                                            [&nbsp;]
+                                                        @else
+                                                            &nbsp;
+                                                        @endif
+                                                    </label>
+                                                    <label class="btn btn-success">
+                                                        <input type="radio" wire:model="items.{{ $k }}.changes.{{ $k1 }}.subs.{{ $k2 }}.qty"
+                                                            name="items.{{ $k }}.changes.{{ $k1 }}.subs.{{ $k2 }}.qty" autocomplete="off" value="1">
+                                                        @if (isset($items[$k]['changes'][$k1]['subs'][$k2]['qty']) && $items[$k]['changes'][$k1]['subs'][$k2]['qty'] == 1)
+                                                            [+]
+                                                        @else
+                                                            +
+                                                        @endif
+                                                    </label>
+                                                    
+                                                </div>
+
+
+
+
+                                                <dd class="col-sm-3 text-right p-0">
+                                                    <small>
+                                                        @if ($var['qty'] == 1)
+                                                            @money($var['price']*100)
+                                                        @endif
+                                                    </small>
+                                                </dd>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+
+
+
+
+                                        {{-- 
+                                        
+                                        @foreach($item['changes'] as $variation)
+                                            @if (array_key_exists('subs', $variation))
+                                                @foreach ($variation['subs'] as $var)
+                                                <div class="col-md-12 d-flex align-items-center mb-0 mb-md-0 pt-0 pb-0">
+
+                                                    <p class="text-sm mb-0">
+                                                        @if ($var['qty'] == 1)
+                                                            <i class="fas fa-plus" style="color:dodgerblue;"></i>
+                                                        @else
+                                                            <i class="fas fa-times" style="color:tomato;"></i>
+                                                        @endif
+
+                                                        {{ $var['name'] }}
+                                                        <small>
+                                                            @if ($var['qty'] == 1)
+                                                                @money($var['price']*100)
+                                                            @endif
+                                                        </small>
+                                                    </p>
+                                                </div>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                        --}}
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+            @endif
+        @endforeach
+
+
+        
+
+
+
+
+
+        {{-- 
+        <br>
+        <div>
+            @if($previousStep)
+            <button type="submit" class="btn btn-primary" wire:click="changeStep({{ $previousStep }})">
+                Procedi<i class="fa fa-chevron-left"></i>
+            </button>
+            @endif
+            @if($nextStep)
+            <button type="submit" class="btn btn-primary" wire:click="changeStep({{ $nextStep }})">
+                Procedi<i class="fa fa-chevron-right"></i>
+            </button>
+            @endif
+        </div>
+
+
+            <br>
+            [actualStep: {{ $actualStep }}]
+            <br>
+            [previousStep: {{ $previousStep }}]
+            <br>
+            [nextStep: {{ $nextStep }}]
+            <br>
+            [lastkey: {{ array_key_last($steps) }}]
+            --}}
+
+</div>

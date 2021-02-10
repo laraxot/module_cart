@@ -1,0 +1,85 @@
+<?php
+
+namespace Modules\Cart\Http\Livewire;
+
+use Illuminate\Session\SessionManager;
+use Livewire\Component;
+use Modules\Theme\Services\ThemeService;
+
+//use Modules\Cart\Models\BookingItem;
+
+/**
+ * Cart.
+ * https://lightit.io/blog/laravel-livewire-shopping-cart-demo/.
+ * https://stackoverflow.com/questions/57562640/quantity-of-shopping-cart-is-not-updating.
+ */
+class Cart extends Component {
+    public $shop_id;
+    public $shop_type;
+    //protected $session;
+    public $items;
+    public $total_qty = 0;
+    public $total_price = 0;
+    public $checkout_enable;
+    public $change_cats = [];
+
+    public $ingredient_cats = [];
+
+    protected $listeners = [
+        'cart::add' => 'add',
+    ];
+
+    public function mount(SessionManager $session, $shop_id, $shop_type) {
+        //$this->session = $session;
+        $this->shop_id = $shop_id;
+        $this->shop_type = $shop_type;
+        $this->checkout_enable = ThemeService::xotModel($shop_type)->getModel()->find($shop_id)->checkout_enable;
+        $this->items = $session->get('cart::items');
+        //dddx($this->items);
+        if (! is_array($this->items)) {
+            $this->items = [];
+        }
+
+        $this->total_qty = count($this->items);
+    }
+
+    public function render() {
+        $tot = 0;
+        foreach ($this->items as $k => $item) {
+            $subprice = $item['price'];
+            foreach ($item['changes'] as $variation) {
+                foreach ($variation['subs'] as $var) {
+                    if (1 == $var['qty']) {
+                        $subprice += $var['price'];
+                    }
+                }
+            }
+
+            $this->items[$k]['tot_price'] = ($subprice * $item['qty']);
+            $tot += $subprice * $item['qty'];
+        }
+        $this->total_price = $tot;
+
+        return view('cart::livewire.cart');
+    }
+
+    public function add($item) {
+        ++$this->total_qty;
+        $this->items[] = $item;
+
+        session()->put('cart::items', $this->items); //per mantenere i dati in sessione
+    }
+
+    public function editItemCart($id) {
+        $item = $this->items[$id];
+        $shop = ThemeService::xotModel($this->shop_type)->getModel()->find($this->shop_id);
+        $cuisines = $shop->cuisines;
+        $recipe = $cuisines->where('id', $item['cat_id'])->first();
+
+        /*
+        $cuisine = Cuisine::find($id_cat);
+
+        $this->change_cats =
+        */
+    }
+}

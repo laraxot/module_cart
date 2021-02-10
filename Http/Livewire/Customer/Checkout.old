@@ -1,0 +1,82 @@
+<?php
+
+namespace Modules\Cart\Http\Livewire\Customer;
+
+use Illuminate\Session\SessionManager;
+use Livewire\Component;
+use Modules\Xot\Services\TenantService;
+
+class Checkout extends Component {
+    public $steps = ['1' => true, '2' => false, '3' => false, '4' => false];
+    public $actualStep = 1;
+    public $previousStep = false;
+    public $nextStep = 2;
+    public $shop_id; //ma qui mi serve?
+    public $shop_type;  //ma qui mi serve??
+    public $items = [];
+    public $total_price = 0;
+
+    public function getShopProperty() {
+        return TenantService::modelEager($this->shop_type)->find($this->shop_id); //ma qui mi serve??
+    }
+
+    public function mount(SessionManager $session, $shop_id, $shop_type) {
+        $this->shop_id = $shop_id;
+        $this->shop_type = $shop_type;
+
+        if ($session->has('cart::items_'.$this->shop_id.'_'.$this->shop_type)) {
+            $this->items = $session->get('cart::items_'.$this->shop_id.'_'.$this->shop_type);
+        }
+        $this->total_price = collect($this->items)->sum('tot_price');
+
+        //dddx($this->items);
+    }
+
+    public function render() {
+        $view = 'cart::livewire.customer.check_out';
+        $view_params = [
+            'product_cats' => $this->shop->productCats, //ma qui mi serve?
+            'view' => $view,
+        ];
+
+        return view($view, $view_params);
+    }
+
+    public function changeStep($step) {
+        foreach ($this->steps as $key => $value) {
+            if ($key == $step) {
+                $value = true;
+            } else {
+                $value = false;
+            }
+        }
+        $this->actualStep = $step;
+        $this->btnStep();
+    }
+
+    public function btnStep() {
+        switch ($this->actualStep) {
+            case 1:
+                $this->previousStep = false;
+                $this->nextStep = $this->actualStep + 1;
+                break;
+            case array_key_last($this->steps):
+                $this->previousStep = $this->actualStep - 1;
+                $this->nextStep = false;
+                break;
+            default:
+                $this->previousStep = $this->actualStep - 1;
+                $this->nextStep = $this->actualStep + 1;
+        }
+    }
+
+    public function increment($name) {
+        ++$this->{$name};
+    }
+
+    public function decrement($name) {
+        if ($this->{$name} > 1) {
+            --$this->{$name};
+        }
+    }
+}
