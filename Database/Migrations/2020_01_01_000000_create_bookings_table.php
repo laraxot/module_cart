@@ -1,21 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Schema\Blueprint;
 //----- bases ----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
- * Class CreateBookingsTable
+ * Class CreateBookingsTable.
  */
-class CreateBookingsTable extends XotBaseMigration
-{
+class CreateBookingsTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         //-- CREATE --
         if (! $this->tableExists()) {
             $this->getConn()->create(
@@ -56,5 +56,7 @@ class CreateBookingsTable extends XotBaseMigration
             //}
             }
         );
-    }//end function up
+    }
+
+    //end function up
 }//end class

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models\Panels\Actions;
 
 //-------- services --------
@@ -9,17 +11,11 @@ use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 //-------- bases -----------
 
 /**
- * Class AddBookingAction
- * @package Modules\Cart\Models\Panels\Actions
+ * Class AddBookingAction.
  */
 class AddBookingAction extends XotBasePanelAction {
-    /**
-     * @var bool
-     */
     public bool $onContainer = true;
-    /**
-     * @var string
-     */
+
     public string $icon = '<i class="far fa-calendar-plus"></i>';
 
     /**
@@ -30,6 +26,6 @@ class AddBookingAction extends XotBasePanelAction {
         $view .= '.'.$this->getName(); //food::admin.restaurant.booking.index.add_booking
         $view = 'cart::booking.index.acts.add_booking';
 
-        return  ThemeService::view($view);
+        return ThemeService::view($view);
     }
 }

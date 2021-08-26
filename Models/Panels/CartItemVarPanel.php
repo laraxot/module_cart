@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models\Panels;
 
 //--- Services --
@@ -7,14 +9,11 @@ namespace Modules\Cart\Models\Panels;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
- * Class CartItemVarPanel
- * @package Modules\Cart\Models\Panels
+ * Class CartItemVarPanel.
  */
 class CartItemVarPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
-     *
-     * @var string
      */
     public static string $model = 'Modules\Cart\Models\CartItemVar';
 

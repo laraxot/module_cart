@@ -1,15 +1,13 @@
 <?php
-namespace Modules\Cart\Models\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\LU\Models\User as User;
-use Modules\Cart\Models\BookingItem as Post;
+declare(strict_types=1);
+
+namespace Modules\Cart\Models\Policies;
 
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
 /**
- * Class BookingItemPolicy
- * @package Modules\Cart\Models\Policies
+ * Class BookingItemPolicy.
  */
 class BookingItemPolicy extends XotBasePolicy {
 }

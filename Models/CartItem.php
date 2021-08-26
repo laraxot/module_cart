@@ -45,6 +45,7 @@ namespace Modules\Cart\Models;
  * @property mixed                                                                       $subtotal_currency
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Cart\Models\CartItemVar[] $variations
  * @property int|null                                                                    $variations_count
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem query()
@@ -76,7 +77,9 @@ namespace Modules\Cart\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereUpdatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereUpdatedIp($value)
  * @mixin \Eloquent
+ *
  * @property string|null $currency
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|CartItem whereCurrency($value)
  */
 class CartItem extends BaseModel {

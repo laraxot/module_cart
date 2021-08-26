@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models\Panels;
 
 use Illuminate\Http\Request;
@@ -8,14 +10,11 @@ use Illuminate\Http\Request;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
- * Class CartPanel
- * @package Modules\Cart\Models\Panels
+ * Class CartPanel.
  */
 class CartPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
-     *
-     * @var string
      */
     public static string $model = 'Modules\Cart\Models\Cart';
 
@@ -69,7 +68,6 @@ class CartPanel extends XotBasePanel {
     /**
      * Get the actions available for the resource.
      *
-     * @param Request|null $request
      * @return array
      */
     public function actions(Request $request = null) {

@@ -91,6 +91,7 @@ use Modules\LU\Models\User;
  * @property \Modules\Blog\Models\Profile|null                                        $profile
  * @property \Illuminate\Database\Eloquent\Model|\Eloquent                            $shop
  * @property User|null                                                                $user
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Cart newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cart query()
@@ -150,14 +151,20 @@ use Modules\LU\Models\User;
  * @method static \Illuminate\Database\Eloquent\Builder|Cart whereUpdatedIp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Cart withDistance($lat, $lng)
  * @mixin \Eloquent
+ *
  * @property \Illuminate\Database\Eloquent\Collection|\Modules\Cart\Models\CartItem[] $checkouts
  * @property int|null                                                                 $checkouts_count
- * @property int|null $post_id
- * @property string|null $post_type
+ * @property int|null                                                                 $post_id
+ * @property string|null                                                              $post_type
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Cart wherePostId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Cart wherePostType($value)
  */
 class Cart extends BaseModel implements CartContract {
+    //-----modalita consegna---
+
+    use GeoTrait;
+    use HasProfileTrait;
     /**
      * @var string[]
      */
@@ -167,22 +174,17 @@ class Cart extends BaseModel implements CartContract {
 
     //-----stato ordine-----
 
-    const OrdineInviato = 1;
+    public const OrdineInviato = 1;
 
-    const OrdineAccettato = 2; //dal ristorante
+    public const OrdineAccettato = 2; //dal ristorante
 
-    const OrdineRifiutato = 3;
+    public const OrdineRifiutato = 3;
 
-    const OrdinePresoInConsegna = 4; //il fattorino prende in consegna l'ordine
+    public const OrdinePresoInConsegna = 4; //il fattorino prende in consegna l'ordine
 
-    const OrdineInViaggio = 5;
+    public const OrdineInViaggio = 5;
 
-    const OrdineConcluso = 6;
-
-    //-----modalita consegna---
-
-    use GeoTrait;
-    use HasProfileTrait;
+    public const OrdineConcluso = 6;
 
     /**
      * @var bool
@@ -257,7 +259,7 @@ class Cart extends BaseModel implements CartContract {
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function shop() { //attività che ha ricevuto l'ordinazione (il carrello)
-        return  $this->morphTo('shop');
+        return $this->morphTo('shop');
     }
 
     //-------------- mutators ----------------------

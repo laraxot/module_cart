@@ -1,33 +1,36 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models;
 
 /**
- * Modules\Cart\Models\CartItemVar
+ * Modules\Cart\Models\CartItemVar.
  *
- * @property int $id
- * @property int $cart_item_id
- * @property int|null $status
- * @property int|null $auth_user_id
- * @property int|null $qty
- * @property string|null $price
- * @property int|null $pivot_id
- * @property string|null $note
- * @property string|null $created_by
- * @property string|null $updated_by
- * @property string|null $deleted_by
+ * @property int                             $id
+ * @property int                             $cart_item_id
+ * @property int|null                        $status
+ * @property int|null                        $auth_user_id
+ * @property int|null                        $qty
+ * @property string|null                     $price
+ * @property int|null                        $pivot_id
+ * @property string|null                     $note
+ * @property string|null                     $created_by
+ * @property string|null                     $updated_by
+ * @property string|null                     $deleted_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $var_cat_type
- * @property int|null $var_cat_id
- * @property string|null $var_cat_title
- * @property string|null $var_item_type
- * @property int|null $var_item_id
- * @property string|null $var_item_title
- * @property-read mixed $price_complete_currency
- * @property-read mixed $price_currency
- * @property-read mixed $qty_simbol
- * @property-read mixed $subtotal_currency
+ * @property string|null                     $var_cat_type
+ * @property int|null                        $var_cat_id
+ * @property string|null                     $var_cat_title
+ * @property string|null                     $var_item_type
+ * @property int|null                        $var_item_id
+ * @property string|null                     $var_item_title
+ * @property mixed                           $price_complete_currency
+ * @property mixed                           $price_currency
+ * @property mixed                           $qty_simbol
+ * @property mixed                           $subtotal_currency
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|CartItemVar newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItemVar newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CartItemVar query()

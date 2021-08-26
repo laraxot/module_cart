@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -15,8 +17,7 @@ use Spatie\MediaLibrary\File;
 use Modules\Xot\Models\Traits\HasPriceTrait;
 
 /**
- * Class BaseModel
- * @package Modules\Cart\Models
+ * Class BaseModel.
  */
 abstract class BaseModel extends Model /*implements HasMedia*/
 {

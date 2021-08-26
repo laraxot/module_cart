@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models;
 
 //------ traits
@@ -8,22 +10,23 @@ namespace Modules\Cart\Models;
 //--------- models --------
 
 /**
- * Modules\Cart\Models\BookingItem
+ * Modules\Cart\Models\BookingItem.
  *
- * @property int $id
- * @property string|null $shop_type
- * @property int|null $shop_id
- * @property string|null $name
- * @property int|null $min_capacity
- * @property int|null $max_capacity
- * @property int|null $status
- * @property string|null $created_by
- * @property string|null $updated_by
+ * @property int                             $id
+ * @property string|null                     $shop_type
+ * @property int|null                        $shop_id
+ * @property string|null                     $name
+ * @property int|null                        $min_capacity
+ * @property int|null                        $max_capacity
+ * @property int|null                        $status
+ * @property string|null                     $created_by
+ * @property string|null                     $updated_by
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read mixed $price_complete_currency
- * @property-read mixed $price_currency
- * @property-read mixed $subtotal_currency
+ * @property mixed                           $price_complete_currency
+ * @property mixed                           $price_currency
+ * @property mixed                           $subtotal_currency
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|BookingItem newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BookingItem newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BookingItem query()
@@ -40,11 +43,9 @@ namespace Modules\Cart\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|BookingItem whereUpdatedBy($value)
  * @mixin \Eloquent
  */
-class BookingItem extends BaseModel
-{
+class BookingItem extends BaseModel {
     /**
      * @var string[]
      */
-    protected $fillable=['id','shop_type','shop_id','name','min_capacity','max_capacity','status','created_by','updated_by','created_at','updated_at'];
-
+    protected $fillable = ['id', 'shop_type', 'shop_id', 'name', 'min_capacity', 'max_capacity', 'status', 'created_by', 'updated_by', 'created_at', 'updated_at'];
 }

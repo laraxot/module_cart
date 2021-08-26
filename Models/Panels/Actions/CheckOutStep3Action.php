@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models\Panels\Actions;
 
 //-------- services --------
@@ -9,24 +11,20 @@ use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 //-------- bases -----------
 
 /**
- * Class CheckOutStep3Action
- * @package Modules\Cart\Models\Panels\Actions
+ * Class CheckOutStep3Action.
  */
 class CheckOutStep3Action extends XotBasePanelAction {
     //public $onContainer = false;
-    /**
-     * @var bool
-     */
+
     public bool $onItem = true; //onlyContainer
     //mettere freccette su e giù
-    /**
-     * @var string
-     */
+
     public string $icon = '';
 
-        /**
-    * Perform the action
-* @return mixed
+    /**
+     * Perform the action.
+     *
+     * @return mixed
      */
     public function handle() {
         $view = 'pub_theme::cart.modal.checkout.3';

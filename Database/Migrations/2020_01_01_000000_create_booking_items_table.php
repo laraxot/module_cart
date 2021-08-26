@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Schema\Blueprint;
 //----- bases ----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 /**
- * Class CreateBookingItemsTable
+ * Class CreateBookingItemsTable.
  */
 class CreateBookingItemsTable extends XotBaseMigration {
     /**
@@ -28,18 +30,18 @@ class CreateBookingItemsTable extends XotBaseMigration {
                     $table->string('created_by')->nullable();
                     $table->string('updated_by')->nullable();
                     $table->timestamps();
-
                 }
             );
         }
         //-- UPDATE --
         $this->getConn()->table($this->getTable(),
             function (Blueprint $table) {
-            //if (! $this->hasColumn('price_complete')) {
+                //if (! $this->hasColumn('price_complete')) {
             //    $table->decimal('price_complete', 10, 3)->nullable();
             //}
             }
         );
+    }
 
-    }//end function up
+    //end function up
 }//end class

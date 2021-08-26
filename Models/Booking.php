@@ -41,6 +41,7 @@ namespace Modules\Cart\Models;
  * @property mixed                                 $price_complete_currency
  * @property mixed                                 $price_currency
  * @property mixed                                 $subtotal_currency
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|Booking newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Booking newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Booking query()

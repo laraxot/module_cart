@@ -1,16 +1,13 @@
 <?php
-namespace Modules\Cart\Models\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\LU\Models\User as User;
-use Modules\Cart\Models\CartItem as Post;
+declare(strict_types=1);
+
+namespace Modules\Cart\Models\Policies;
 
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
 /**
- * Class CartItemVarPolicy
- * @package Modules\Cart\Models\Policies
+ * Class CartItemVarPolicy.
  */
-class CartItemVarPolicy extends XotBasePolicy
-{
+class CartItemVarPolicy extends XotBasePolicy {
 }

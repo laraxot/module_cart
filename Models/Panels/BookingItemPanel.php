@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Cart\Models\Panels;
 
 //--- Services --
@@ -7,23 +9,18 @@ namespace Modules\Cart\Models\Panels;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 /**
- * Class BookingItemPanel
- * @package Modules\Cart\Models\Panels
+ * Class BookingItemPanel.
  */
 class BookingItemPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
-     *
-     * @var string
      */
     public static string $model = 'Modules\Cart\Models\BookingItem';
 
     /**
      * on select the option label.
-     * @param object $row
-     * @return string
      */
-    public function optionLabel(object $row):string {
+    public function optionLabel(object $row): string {
         return $row->name.'['.$row->min_capacity.']['.$row->max_capacity.']';
     }
 
