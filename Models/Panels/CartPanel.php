@@ -70,7 +70,7 @@ class CartPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions(Request $request = null) {
+    public function actions(Request $request = null): array {
         $auth_user_id = \Auth::id();
 
         return [
