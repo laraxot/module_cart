@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Cart\Models\Policies;
 
 use Modules\Cart\Contracts\CartContract;
-use Modules\Xot\Contracts\ModelContract;
+
 use Modules\Xot\Contracts\UserContract;
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
@@ -13,7 +13,7 @@ use Modules\Xot\Models\Policies\XotBasePolicy;
  * Class CartPolicy.
  */
 class CartPolicy extends XotBasePolicy {
-    public function bellboyTakeCart(UserContract $user, ModelContract $post): bool {
+    public function bellboyTakeCart(UserContract $user, Model $post): bool {
         return true;
     }
 
@@ -21,31 +21,31 @@ class CartPolicy extends XotBasePolicy {
         return optional($cart->shop)->checkout_enable;
     }
 
-    public function checkOutStep2(UserContract $user, ModelContract $post): bool {
+    public function checkOutStep2(UserContract $user, Model $post): bool {
         return true;
     }
 
-    public function checkOutStep3(UserContract $user, ModelContract $post): bool {
+    public function checkOutStep3(UserContract $user, Model $post): bool {
         return true;
     }
 
-    public function checkOutStep4(UserContract $user, ModelContract $post): bool {
+    public function checkOutStep4(UserContract $user, Model $post): bool {
         return true;
     }
 
-    public function checkOutStep5(UserContract $user, ModelContract $post): bool {
+    public function checkOutStep5(UserContract $user, Model $post): bool {
         return true;
     }
 
-    public function assignCartToBellBoy(UserContract $user, ModelContract $post): bool {
+    public function assignCartToBellBoy(UserContract $user, Model $post): bool {
         return true;
     }
 
-    public function takeCartBellBoy(UserContract $user, ModelContract $post): bool {
+    public function takeCartBellBoy(UserContract $user, Model $post): bool {
         return true;
     }
 
-    public function attach(UserContract $user, ModelContract $post): bool {
+    public function attach(UserContract $user, Model $post): bool {
         return true;
     }
 }
