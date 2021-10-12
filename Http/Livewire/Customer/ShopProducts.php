@@ -13,7 +13,7 @@ use Modules\Cart\Contracts\ChangeCatContract;
 use Modules\Cart\Contracts\ProductCatContract;
 use Modules\Cart\Contracts\ProductContract;
 use Modules\Cart\Contracts\ShopContract;
-use Modules\Xot\Services\TenantService;
+use Modules\Tenant\Services\TenantService;
 
 /**
  * Modules\Cart\Http\Livewire\Customer\ShopProducts.
