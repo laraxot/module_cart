@@ -26,7 +26,7 @@ namespace Modules\Cart\Models;
  * @property \Illuminate\Support\Carbon|null                                             $created_at
  * @property \Illuminate\Support\Carbon|null                                             $updated_at
  * @property string|null                                                                 $deleted_at
- * @property int|null                                                                    $auth_user_id
+ * @property int|null                                                                    $user_id
  * @property string|null                                                                 $title
  * @property string|null                                                                 $subtitle
  * @property string|null                                                                 $sess_id
@@ -98,7 +98,7 @@ class CartItem extends BaseModel {
         'shop_id', 'shop_type', 'shop_title',
         'item_id', 'item_type', 'item_title',
         'subtitle', 'note', 'price',
-        'auth_user_id', 'customer_fullname', 'status', 'qty', ];
+        'user_id', 'customer_fullname', 'status', 'qty', ];
 
     //-------- relationship ------
 

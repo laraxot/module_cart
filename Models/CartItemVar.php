@@ -10,7 +10,7 @@ namespace Modules\Cart\Models;
  * @property int                             $id
  * @property int                             $cart_item_id
  * @property int|null                        $status
- * @property int|null                        $auth_user_id
+ * @property int|null                        $user_id
  * @property int|null                        $qty
  * @property string|null                     $price
  * @property int|null                        $pivot_id
@@ -61,7 +61,7 @@ class CartItemVar extends BaseModel {
      */
     protected $fillable = ['id', 'cart_item_id', 'status', 'var_cat_id', 'var_cat_type', 'var_cat_title',
         'var_item_id', 'var_item_type', 'var_item_title',
-        'qty', 'price', 'note', 'auth_user_id', 'customer_fullname', 'status', ];
+        'qty', 'price', 'note', 'user_id', 'customer_fullname', 'status', ];
 
     //--------- Mutators----------
 

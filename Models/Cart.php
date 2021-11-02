@@ -29,7 +29,7 @@ use Modules\LU\Models\User;
  * @property \Illuminate\Support\Carbon|null                                          $created_at
  * @property \Illuminate\Support\Carbon|null                                          $updated_at
  * @property string|null                                                              $deleted_at
- * @property int|null                                                                 $auth_user_id
+ * @property int|null                                                                 $user_id
  * @property int|null                                                                 $shop_id
  * @property string|null                                                              $shop_type
  * @property string|null                                                              $shop_title
@@ -195,7 +195,7 @@ class Cart extends BaseModel implements CartContract {
      * @var string[]
      */
     protected $fillable = [
-        'id', 'post_id', 'post_type', 'note', 'auth_user_id',
+        'id', 'post_id', 'post_type', 'note', 'user_id',
         'customer_fullname', 'status', 'price_complete', 'delivery_method',
         'payment_method',
         'shop_id', 'shop_type', 'shop_title',
@@ -227,7 +227,7 @@ class Cart extends BaseModel implements CartContract {
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function user() {
-        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
+        return $this->hasOne(User::class, 'user_id', 'user_id');
     }
 
     /**
@@ -236,7 +236,7 @@ class Cart extends BaseModel implements CartContract {
     public function profile() {
         $profile_class = config('xra.model.profile');
 
-        return $this->hasOne($profile_class, 'auth_user_id', 'auth_user_id');
+        return $this->hasOne($profile_class, 'user_id', 'user_id');
     }
 
     /**

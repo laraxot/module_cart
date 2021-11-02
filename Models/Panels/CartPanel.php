@@ -71,7 +71,7 @@ class CartPanel extends XotBasePanel {
      * @return array
      */
     public function actions(Request $request = null): array {
-        $auth_user_id = \Auth::id();
+        $user_id = \Auth::id();
 
         return [
             new Actions\CheckOutStep1Action(), //da rinominare old o cancellare
@@ -79,9 +79,9 @@ class CartPanel extends XotBasePanel {
             new Actions\CheckOutStep3Action(), //da rinominare old o cancellare
             new Actions\CheckOutStep4Action(), //da rinominare old o cancellare
             new Actions\CheckOutStep5Action(), //da rinominare old o cancellare
-            new Actions\AssignCartToBellBoyAction($auth_user_id), //creato come prova/alternativa di TakeCartBellBoyAction
+            new Actions\AssignCartToBellBoyAction($user_id), //creato come prova/alternativa di TakeCartBellBoyAction
             new Actions\BellBoyTakeCartAction(),
-            new Actions\TakeCartBellBoyAction($auth_user_id),
+            new Actions\TakeCartBellBoyAction($user_id),
         ];
     }
 

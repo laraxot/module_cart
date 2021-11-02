@@ -22,7 +22,7 @@ class CreateCartItemVarsTable extends XotBaseMigration {
                 $table->increments('id');
                 $table->integer('cart_item_id');
                 $table->integer('status')->nullable();
-                $table->integer('auth_user_id')->nullable();
+                $table->integer('user_id')->nullable();
                 $table->integer('qty')->nullable();
                 $table->decimal('price', 10, 3)->nullable();
                 $table->integer('pivot_id')->nullable();

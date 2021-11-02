@@ -25,7 +25,7 @@ class CreateCartsTable extends XotBaseMigration {
                     $table->increments('id');
                     $table->nullableMorphs('shop');
                     $table->string('shop_title')->nullable();
-                    $table->integer('auth_user_id')->nullable();
+                    $table->integer('user_id')->nullable();
                     $table->text('note');
                     $table->integer('status')->nullable();
                     $table->decimal('price_complete', 10, 3)->nullable();

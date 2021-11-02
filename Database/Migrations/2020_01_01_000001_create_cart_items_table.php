@@ -22,7 +22,7 @@ class CreateCartItemsTable extends XotBaseMigration {
                 $table->increments('id');
                 $table->integer('cart_id');
                 $table->integer('status')->nullable();
-                $table->integer('auth_user_id')->nullable();
+                $table->integer('user_id')->nullable();
                 $table->text('note')->nullable();
                 $table->integer('qty');
                 $table->decimal('price', 10, 3);
@@ -42,7 +42,7 @@ class CreateCartItemsTable extends XotBaseMigration {
                 $table->integer('cart_id')->after('id')->nullable();
             }
             if (! $this->hasColumn('title')) {
-                $table->string('title')->after('auth_user_id')->nullable();
+                $table->string('title')->after('user_id')->nullable();
                 $table->string('subtitle')->after('title')->nullable();
             }
             if (! $this->hasColumn('pivot_id')) {

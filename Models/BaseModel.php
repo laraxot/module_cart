@@ -27,7 +27,7 @@ abstract class BaseModel extends Model /*implements HasMedia*/
      * @var string
      */
     protected $primaryKey = 'id';
-    //protected $fillable = ['id', 'post_id', 'post_type', 'note', 'auth_user_id', 'customer_fullname', 'status'];
+    //protected $fillable = ['id', 'post_id', 'post_type', 'note', 'user_id', 'customer_fullname', 'status'];
     /**
      * @var string[]
      */

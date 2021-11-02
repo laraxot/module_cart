@@ -29,15 +29,15 @@ class AssignCartToBellBoyAction extends XotBasePanelAction {
      *
      * @var int|string|null
      */
-    protected $auth_user_id;
+    protected $user_id;
 
     /**
      * AssignCartToBellBoyAction constructor.
      *
-     * @param int|string|null $auth_user_id
+     * @param int|string|null $user_id
      */
-    public function __construct($auth_user_id) {
-        $this->auth_user_id = $auth_user_id;
+    public function __construct($user_id) {
+        $this->user_id = $user_id;
     }
 
     /**
@@ -68,7 +68,7 @@ class AssignCartToBellBoyAction extends XotBasePanelAction {
         extract($data);
         [$containers,$items] = params2ContainerItem();
 
-        $bellboy = BellBoy::query()->where('auth_user_id', $this->auth_user_id)->first();
+        $bellboy = BellBoy::query()->where('user_id', $this->user_id)->first();
         if (null == $bellboy) {
             throw new \Exception('bellboy not found');
         }

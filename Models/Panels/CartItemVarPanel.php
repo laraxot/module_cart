@@ -85,7 +85,7 @@ class CartItemVarPanel extends XotBasePanel {
             ],
             (object) [
                 'type' => 'Integer',
-                'name' => 'auth_user_id',
+                'name' => 'user_id',
                 'comment' => null,
             ],
             (object) [
