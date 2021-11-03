@@ -50,6 +50,9 @@ class CreateCartItemVarsTable extends XotBaseMigration {
             if ($this->hasColumn('post_id')) {
                 $table->dropColumn(['post_id', 'post_type', 'title', 'subtitle']);
             }
+            if ($this->hasColumn('auth_user_id')) {
+                $table->renameColumn('auth_user_id', 'user_id');
+            }
         });
     }
 }
