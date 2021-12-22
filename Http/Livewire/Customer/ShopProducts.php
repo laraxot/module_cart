@@ -118,7 +118,7 @@ class ShopProducts extends Component {
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function render() {
-        $view = 'cart::livewire.customer.shop_products';
+        $view = 'cart::livewire.customer.shop-products';
         $view_params = [
             'product_cats' => $this->shop->productCats,
             'view' => $view,
