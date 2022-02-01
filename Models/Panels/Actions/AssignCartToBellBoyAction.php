@@ -83,7 +83,7 @@ class AssignCartToBellBoyAction extends XotBasePanelAction {
         /*
         dddx($cart);
         $bellboy_panel = Panel::get($bellboy);
-        $url = $bellboy_panel->relatedUrl(['related_name' => 'profile', 'act' => 'index_edit']);
+        $url = $bellboy_panel->relatedUrl('profile','index_edit');
         dddx($url);
         */
 

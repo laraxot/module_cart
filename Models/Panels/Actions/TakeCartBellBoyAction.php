@@ -91,7 +91,7 @@ class TakeCartBellBoyAction extends XotBasePanelAction {
         */
         $profile = $bellboy->profile;
         $profile_panel = Panel::get($profile);
-        $url = $profile_panel->relatedUrl(['related_name' => 'bell_boy', 'act' => 'index_edit']);
+        $url = $profile_panel->relatedUrl('bell_boy','index_edit');
         \Session::flash('status', 'aggiornato! ');
 
         return redirect($url);
