@@ -76,7 +76,7 @@ class TakeCartBellBoyAction extends XotBasePanelAction {
         if (null == $bellboy) {
             throw new \Exception('not found belboy');
         }
-        $bellboy_panel = Panel::get($bellboy);
+        $bellboy_panel = Panel::make()->get($bellboy);
         $cart = Cart::query()->find($id);
         if (null == $cart) {
             throw new \Exception('not found cart');
@@ -90,7 +90,7 @@ class TakeCartBellBoyAction extends XotBasePanelAction {
         dddx($cart);
         */
         $profile = $bellboy->profile;
-        $profile_panel = Panel::get($profile);
+        $profile_panel = Panel::make()->get($profile);
         $url = $profile_panel->relatedUrl('bell_boy','index_edit');
         \Session::flash('status', 'aggiornato! ');
 
